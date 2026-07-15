@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diamond Transportation Services | Black Car Luxury</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   Diamond Transportation Services — One-Page Demo
+   Black & Gold Luxury Theme
+   ============================================ */
+
+:root {
+  --black: #0a0a0a;
+  --black-2: #141414;
+  --black-3: #1c1c1c;
+  --gold: #c9a227;
+  --gold-light: #e6c866;
+  --gold-dim: #8a7020;
+  --white: #f6f5f1;
+  --gray: #a8a8a2;
+  --gray-dim: #6f6f6a;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Montserrat', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--sans);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.section { padding: 90px 0; scroll-margin-top: 84px; }
+.section-alt { background: var(--black-2); }
+
+.section-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+.section-head h2 { font-size: clamp(28px, 4vw, 38px); margin-bottom: 14px; }
+.section-head p { color: var(--gray); font-size: 15px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 15px 34px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+/* Glowing gold button — replaces flat fill */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: var(--black);
+  box-shadow: 0 0 10px rgba(201,162,39,0.55), 0 0 26px rgba(201,162,39,0.3);
+  animation: pulseGlow 2.6s ease-in-out infinite;
+}
+.btn-gold:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(230,200,102,0.9), 0 0 46px rgba(201,162,39,0.55);
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 10px rgba(201,162,39,0.5), 0 0 24px rgba(201,162,39,0.28); }
+  50% { box-shadow: 0 0 16px rgba(230,200,102,0.85), 0 0 38px rgba(201,162,39,0.5); }
+}
+
+.btn-outline {
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  background: transparent;
+}
+.btn-outline:hover {
+  background: rgba(201,162,39,0.1);
+  box-shadow: 0 0 16px rgba(201,162,39,0.4);
+}
+
+.btn-row { display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10,10,10,0.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(201,162,39,0.25);
+}
+.navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 84px;
+  position: relative;
+}
+
+.brand { display: flex; flex-direction: column; line-height: 1.1; }
+.brand .name { font-family: var(--serif); font-size: 22px; letter-spacing: 2px; color: var(--gold-light); }
+.brand .sub { font-size: 9px; letter-spacing: 3px; color: var(--gray); text-transform: uppercase; margin-top: 3px; }
+
+.nav-links { display: flex; align-items: center; gap: 38px; }
+.nav-links a {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links .btn { padding: 11px 22px; }
+
+/* Hamburger — three lines */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  width: 30px;
+  height: 24px;
+}
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--gold-light);
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 860px) {
+  .hamburger { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 84px;
+    left: 0;
+    right: 0;
+    background: rgba(10,10,10,0.98);
+    border-bottom: 1px solid rgba(201,162,39,0.3);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 28px 24px 34px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links .btn { width: 100%; text-align: center; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding: 70px 0 90px;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(201,162,39,0.10), transparent 55%),
+    radial-gradient(ellipse at 80% 80%, rgba(201,162,39,0.08), transparent 55%),
+    repeating-linear-gradient(115deg, rgba(255,255,255,0.015) 0px, rgba(255,255,255,0.015) 1px, transparent 1px, transparent 60px),
+    linear-gradient(180deg, #0a0a0a 0%, #121212 100%);
+  border-bottom: 1px solid rgba(201,162,39,0.2);
+  scroll-margin-top: 84px;
+}
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 60px;
+  align-items: center;
+}
+@media (max-width: 900px) {
+  .hero .container { grid-template-columns: 1fr; }
+}
+
+.hero h1 { font-size: clamp(34px, 5.4vw, 58px); line-height: 1.12; margin-bottom: 22px; color: var(--white); }
+.hero h1 span { color: var(--gold-light); }
+.hero p.lead { font-size: 17px; color: var(--gray); max-width: 520px; margin-bottom: 34px; }
+
+/* ---------- Image placeholders ---------- */
+.img-placeholder {
+  border: 1.5px dashed rgba(201,162,39,0.5);
+  border-radius: 6px;
+  background: linear-gradient(135deg, #151515, #0a0a0a);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+  padding: 20px;
+  color: var(--gray-dim);
+}
+.img-placeholder svg { width: 36px; height: 36px; opacity: 0.55; }
+.img-placeholder span {
+  font-size: 10.5px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.hero-img { aspect-ratio: 4/3; }
+.fleet-img { aspect-ratio: 4/3; margin-bottom: 20px; }
+.gallery-img { aspect-ratio: 1/1; }
+
+/* ---------- Cards / Grids ---------- */
+.grid { display: grid; gap: 28px; }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+@media (max-width: 980px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+}
+
+.card {
+  background: var(--black-3);
+  border: 1px solid rgba(201,162,39,0.18);
+  border-radius: 4px;
+  padding: 34px 28px;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover {
+  border-color: rgba(201,162,39,0.55);
+  transform: translateY(-3px);
+  box-shadow: 0 0 22px rgba(201,162,39,0.15);
+}
+
+.icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: var(--gold-light);
+}
+.icon-circle svg { width: 24px; height: 24px; }
+
+.card h3 { font-size: 19px; margin-bottom: 10px; color: var(--white); }
+.card p { font-size: 14px; color: var(--gray); margin-bottom: 18px; }
+
+/* ---------- Service list ---------- */
+.service-item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 30px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.service-item:last-child { border-bottom: none; }
+.service-item .icon-circle { margin-bottom: 0; }
+.service-item h3 { font-size: 20px; margin-bottom: 6px; color: var(--white); }
+.service-item p { color: var(--gray); font-size: 14px; margin: 0; }
+
+@media (max-width: 700px) {
+  .service-item { grid-template-columns: 48px 1fr; }
+  .service-item .btn { grid-column: 1 / -1; margin-top: 14px; justify-self: start; }
+}
+
+/* ---------- Features ---------- */
+.feature { text-align: center; }
+.feature .icon-circle { margin: 0 auto 18px; }
+.feature h3 { font-size: 16px; margin-bottom: 8px; letter-spacing: 0.5px; }
+.feature p { color: var(--gray); font-size: 13px; }
+
+/* ---------- CTA banner ---------- */
+.cta-banner {
+  background: linear-gradient(135deg, #171308, #0a0a0a 60%);
+  border-top: 1px solid rgba(201,162,39,0.3);
+  border-bottom: 1px solid rgba(201,162,39,0.3);
+  padding: 70px 0;
+  text-align: center;
+  scroll-margin-top: 84px;
+}
+.cta-banner h2 { font-size: clamp(24px, 4vw, 34px); margin-bottom: 12px; color: var(--white); }
+.cta-banner p { color: var(--gray); margin-bottom: 28px; }
+.cta-banner .phone-link { font-family: var(--serif); font-size: 22px; color: var(--gold-light); }
+
+/* ---------- Team ---------- */
+.avatar-placeholder {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  color: var(--gray-dim);
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
+  background: var(--black-2);
+}
+.avatar-placeholder svg { width: 42px; height: 42px; opacity: 0.5; }
+
+.team-card { text-align: center; }
+.team-card h4 { font-size: 16px; color: var(--white); margin-bottom: 4px; }
+.team-card .role { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+.team-card p.bio { font-size: 13px; color: var(--gray-dim); font-style: italic; }
+
+.values-grid { text-align: center; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+@media (max-width: 860px) { .two-col { grid-template-columns: 1fr; gap: 36px; } }
+
+/* ---------- Contact ---------- */
+.contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+@media (max-width: 900px) { .contact-wrap { grid-template-columns: 1fr; } }
+
+.contact-info-item { display: flex; gap: 16px; margin-bottom: 28px; }
+.contact-info-item .icon-circle { flex-shrink: 0; margin-bottom: 0; }
+.contact-info-item h4 { font-size: 14px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 6px; }
+.contact-info-item p, .contact-info-item a { color: var(--gray); font-size: 15px; }
+.contact-info-item a:hover { color: var(--white); }
+
+.map-placeholder {
+  margin-top: 10px;
+  height: 180px;
+  border: 1.5px dashed rgba(201,162,39,0.4);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gray-dim);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+form.contact-form {
+  background: var(--black-3);
+  border: 1px solid rgba(201,162,39,0.18);
+  border-radius: 4px;
+  padding: 36px;
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+.field { margin-bottom: 20px; }
+.field label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+.field input, .field select, .field textarea {
+  width: 100%;
+  background: var(--black-2);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--white);
+  padding: 12px 14px;
+  font-family: var(--sans);
+  font-size: 14px;
+  border-radius: 2px;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 8px rgba(201,162,39,0.35);
+}
+.field textarea { resize: vertical; min-height: 100px; }
+
+.form-note { font-size: 12px; color: var(--gray-dim); margin-top: 14px; font-style: italic; }
+
+/* ---------- Footer ---------- */
+footer { border-top: 1px solid rgba(201,162,39,0.25); padding: 50px 0 28px; background: var(--black-2); }
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 24px;
+}
+.footer-col h5 { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold-light); margin-bottom: 16px; }
+.footer-col a, .footer-col p { display: block; font-size: 13px; color: var(--gray); margin-bottom: 10px; }
+.footer-col a:hover { color: var(--white); }
+.footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: 12px; color: var(--gray-dim); }
+.demo-tag { color: var(--gold-dim); }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container">
+    <a href="#home" class="brand">
+      <span class="name">DIAMOND</span>
+      <span class="sub">Transportation Services</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-gold">Book Now</a>
+    </nav>
+
+    <div class="hamburger" id="hamburger" aria-label="Menu" role="button">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow">Black Car &amp; Luxury Chauffeur Service</span>
+      <h1>Arrive in <span>Elegance.</span><br>Travel in Distinction.</h1>
+      <p class="lead">Diamond Transportation Services delivers premium chauffeured transportation for executives, special occasions, and discerning travelers who expect nothing less than perfection.</p>
+      <div class="btn-row">
+        <a href="#contact" class="btn btn-gold">Book Now</a>
+        <a href="#services" class="btn btn-outline">View Services</a>
+      </div>
+    </div>
+    <div class="img-placeholder hero-img">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>Add Hero Photo Here</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What We Offer</span>
+      <h2>Premium Transportation Services</h2>
+      <p>From the airport to the altar, our fleet and chauffeurs are ready for every occasion that calls for distinction.</p>
+    </div>
+    <div class="container" style="max-width: 900px; padding: 0;">
+
+      <div class="service-item">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.5 19l7-1 3.5-7 7-7a1 1 0 011.4 1.4l-7 7-7 3.5-1 7z"/></svg>
+        </div>
+        <div>
+          <h3>Airport Transportation</h3>
+          <p>Real-time flight tracking, curbside or meet-and-greet service, and door-to-door transfers for arrivals and departures — no waiting, no stress.</p>
+        </div>
+        <a href="#contact" class="btn btn-outline">Reserve</a>
+      </div>
+
+      <div class="service-item">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="8" y1="7" x2="10" y2="7"/><line x1="8" y1="11" x2="10" y2="11"/><line x1="14" y1="7" x2="16" y2="7"/><line x1="14" y1="11" x2="16" y2="11"/><line x1="10" y1="21" x2="10" y2="17"/><line x1="14" y1="21" x2="14" y2="17"/></svg>
+        </div>
+        <div>
+          <h3>Corporate &amp; Executive Travel</h3>
+          <p>Dependable, discreet transportation for meetings, roadshows, and VIP clients. Impress every stakeholder before they even reach the boardroom.</p>
+        </div>
+        <a href="#contact" class="btn btn-outline">Reserve</a>
+      </div>
+
+      <div class="service-item">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0112 5a5.5 5.5 0 019.5 7C19 16.5 12 21 12 21z"/></svg>
+        </div>
+        <div>
+          <h3>Weddings &amp; Special Occasions</h3>
+          <p>Arrive in a manner as memorable as the moment itself — weddings, anniversaries, proms, and milestone celebrations deserve a grand entrance.</p>
+        </div>
+        <a href="#contact" class="btn btn-outline">Reserve</a>
+      </div>
+
+      <div class="service-item">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <h3>Hourly / As-Directed Service</h3>
+          <p>Keep your chauffeur on standby for a full day of meetings, errands, or events. Total flexibility, one dedicated driver.</p>
+        </div>
+        <a href="#contact" class="btn btn-outline">Reserve</a>
+      </div>
+
+      <div class="service-item">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v6M12 22v-6M4 12h6M14 12h6"/><circle cx="12" cy="12" r="9"/></svg>
+        </div>
+        <div>
+          <h3>Point-to-Point Transfers</h3>
+          <p>Direct, efficient transportation between any two destinations — city to city, venue to venue, always on schedule.</p>
+        </div>
+        <a href="#contact" class="btn btn-outline">Reserve</a>
+      </div>
+
+      <div class="service-item">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2h8M12 2v7M7 9h10l1 4a6 6 0 01-12 0z"/><path d="M12 20v-4M8 20h8"/></svg>
+        </div>
+        <div>
+          <h3>Nights Out &amp; Wine Tours</h3>
+          <p>Leave the driving to us for date nights, wine tours, and celebrations. Enjoy the evening — we'll handle the road.</p>
+        </div>
+        <a href="#contact" class="btn btn-outline">Reserve</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The Diamond Standard</span>
+      <h2>Why Clients Choose Us</h2>
+    </div>
+    <div class="grid grid-4">
+      <div class="feature">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+        </div>
+        <h3>Safety First</h3>
+        <p>Licensed, insured, and background-checked professional chauffeurs.</p>
+      </div>
+      <div class="feature">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+        </div>
+        <h3>Always On Time</h3>
+        <p>Punctuality isn't a promise, it's the standard we hold ourselves to.</p>
+      </div>
+      <div class="feature">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21v-6a4 4 0 014-4h8a4 4 0 014 4v6"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Discreet &amp; Professional</h3>
+        <p>Your privacy and comfort are treated with the utmost respect.</p>
+      </div>
+      <div class="feature">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.9 6.3L21 9.3l-4.5 4.4L17.6 20 12 16.8 6.4 20l1.1-6.3L3 9.3l6.1-1z"/></svg>
+        </div>
+        <h3>Luxury Fleet</h3>
+        <p>Immaculate, late-model black vehicles maintained to the highest standard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container two-col">
+    <div class="img-placeholder" style="aspect-ratio: 4/3;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+      <span>Add Company Photo Here</span>
+    </div>
+    <div>
+      <span class="eyebrow">About Diamond</span>
+      <h2 style="font-size:32px; margin-bottom:18px;">Built On Elegance, Driven By Excellence</h2>
+      <p style="color:var(--gray); margin-bottom:18px;">Diamond Transportation Services was founded with a single mission: to redefine black car service through unmatched professionalism, immaculate vehicles, and an experience worthy of the name.</p>
+      <p style="color:var(--gray-dim); font-style:italic;">[Placeholder — full company story to be added once final content is provided.]</p>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Our Fleet</span>
+      <h2>Immaculate. Late-Model. Black.</h2>
+      <p>Our fleet consists of premium black sedans and SUVs, detailed before every reservation. Add vehicle photos below.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card" style="text-align:center;">
+        <div class="img-placeholder fleet-img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Add Photo</span>
+        </div>
+        <h3>Executive Sedan</h3>
+        <p>Ideal for airport transfers and individual corporate travel.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="img-placeholder fleet-img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Add Photo</span>
+        </div>
+        <h3>Luxury SUV</h3>
+        <p>Extra space and comfort for groups, families, or added luggage.</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="img-placeholder fleet-img">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Add Photo</span>
+        </div>
+        <h3>Sprinter / Group Van</h3>
+        <p>Available for larger parties and wedding transportation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Meet the Team</span>
+      <h2>The People Behind Diamond</h2>
+      <p>Headshots are on the way — team profiles below are placeholders until final photos and bios are provided.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="team-card">
+        <div class="avatar-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        </div>
+        <h4>Founder / Owner</h4>
+        <div class="role">Photo Coming Soon</div>
+        <p class="bio">Bio to be added.</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        </div>
+        <h4>Lead Chauffeur</h4>
+        <div class="role">Photo Coming Soon</div>
+        <p class="bio">Bio to be added.</p>
+      </div>
+      <div class="team-card">
+        <div class="avatar-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+        </div>
+        <h4>Client Relations</h4>
+        <div class="role">Photo Coming Soon</div>
+        <p class="bio">Bio to be added.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Our Values</span>
+      <h2>What Drives Us</h2>
+    </div>
+    <div class="grid grid-4 values-grid">
+      <div class="feature">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg>
+        </div>
+        <h3>Safety</h3>
+        <p>Licensed and insured, every trip.</p>
+      </div>
+      <div class="feature">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+        </div>
+        <h3>Punctuality</h3>
+        <p>On time, without exception.</p>
+      </div>
+      <div class="feature">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 21v-6a4 4 0 014-4h8a4 4 0 014 4v6"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Discretion</h3>
+        <p>Privacy respected at every turn.</p>
+      </div>
+      <div class="feature">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2.9 6.3L21 9.3l-4.5 4.4L17.6 20 12 16.8 6.4 20l1.1-6.3L3 9.3l6.1-1z"/></svg>
+        </div>
+        <h3>Elegance</h3>
+        <p>Every detail, refined.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to Ride in Style?</h2>
+    <p>Reserve your black car experience today.</p>
+    <div class="btn-row" style="justify-content:center;">
+      <a href="#contact" class="btn btn-gold">Book Now</a>
+      <a href="tel:+19452878191" class="phone-link">+1 (945) 287-8191</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Get In Touch</span>
+      <h2>Reserve Your Ride</h2>
+      <p>Call, request a quote, or send us your trip details — we'll take care of the rest.</p>
+    </div>
+    <div class="contact-wrap">
+
+      <div>
+        <div class="contact-info-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.7a2 2 0 01-.5 2.1L8 9.7a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.5c.9.3 1.8.5 2.7.6a2 2 0 011.7 2z"/></svg>
+          </div>
+          <div>
+            <h4>Phone</h4>
+            <a href="tel:+19452878191">+1 (945) 287-8191</a>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <a href="mailto:info@diamondtransportationservices.com">info@diamondtransportationservices.com</a>
+            <p style="font-size:12px; color:var(--gray-dim); font-style:italic; margin-top:4px;">(placeholder — confirm final address)</p>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <h4>Availability</h4>
+            <p>Service by reservation, 24/7</p>
+          </div>
+        </div>
+
+        <div class="contact-info-item">
+          <div class="icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s7-6.3 7-12a7 7 0 10-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <div>
+            <h4>Service Area</h4>
+            <p>[Placeholder — add city / metro area served]</p>
+          </div>
+        </div>
+
+        <div class="map-placeholder">Map Coming Soon</div>
+      </div>
+
+      <form class="contact-form">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="Jane Diamond">
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="(945) 000-0000">
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@email.com">
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="service">Service Needed</label>
+            <select id="service">
+              <option>Airport Transportation</option>
+              <option>Corporate / Executive Travel</option>
+              <option>Weddings &amp; Special Occasions</option>
+              <option>Hourly / As-Directed Service</option>
+              <option>Point-to-Point Transfer</option>
+              <option>Nights Out &amp; Wine Tours</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="date">Date Needed</label>
+            <input type="date" id="date">
+          </div>
+        </div>
+        <div class="field">
+          <label for="message">Trip Details</label>
+          <textarea id="message" placeholder="Pickup, drop-off, number of passengers, and any special requests..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-gold" style="width:100%;">Submit Request</button>
+        <p class="form-note">Demo form — not yet connected. Live submissions will be enabled at launch.</p>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-col">
+        <h5>Diamond Transportation Services</h5>
+        <p style="max-width:260px;">Premium black car &amp; luxury chauffeur service. This is a demo site — content and imagery are placeholders pending final assets.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navigate</h5>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <a href="tel:+19452878191">+1 (945) 287-8191</a>
+        <p>info@diamondtransportationservices.com</p>
+        <p>Service by Reservation, 24/7</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Diamond Transportation Services. All rights reserved.</span>
+      <span class="demo-tag">Demo Website — Content Placeholder</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var hamburger = document.getElementById('hamburger');
+  var navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', function () {
+    hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
